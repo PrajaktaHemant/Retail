@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Retail.Views.ProductCatalogue.Brochures"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:contr="clr-namespace:Retail.Controls"
+    x:Name="Root"
+    BackgroundColor="{StaticResource contentBG}"
+    Title="Brochure">
+    
+    <ContentPage.Content>
+<CollectionView ItemsSource="{Binding BrochureData}">               
+       
+         <CollectionView.ItemTemplate>
+
+         <DataTemplate>
+             
+             <Grid HeightRequest="300" WidthRequest="100" BackgroundColor="Transparent" Padding="5">
+                
+                          <contr:RoundedCornerView  VerticalOptions="Center" Grid.Row="0"    BorderColor="{StaticResource borderColor}" BorderWidth="1" RoundedCornerRadius="12" BackgroundColor="Transparent" >
+                                <Grid BackgroundColor="White" VerticalOptions="FillAndExpand" Padding="5" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>                                        
+                                    </Grid.RowDefinitions>
+                 <Label Grid.Row="0" Text="{Binding ProductCategory}"/>
+                 
+                <Grid Grid.Row="1"  VerticalOptions="Start" BackgroundColor="black">
+                <Grid Grid.Row="0"   >
+
+                    <Grid Grid.Row="0" HorizontalOptions="Center" BackgroundColor="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <CarouselView  ItemsSource="{Binding Source={x:Reference Root},Path=BindingContext.BrochureData}" x:Name="cvBanners" Grid.Row="0" Grid.RowSpan="2"  IndicatorView="indicatorview">
+
+                            <CarouselView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="5*"/>                                          
+                                        </Grid.RowDefinitions>
+                                        <Grid  Grid.Row="0" >
+                                            <Grid.RowDefinitions>
+                                            <RowDefinition Height="8*"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                            <Image Grid.Row="0"  Source="{Binding ImageURL}" Aspect="AspectFit" >
+                                                 <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer
+                                                            Tapped="TapGestureRecognizer_Tapped"
+                                                            NumberOfTapsRequired="1" />
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                            <Label Grid.Row="1"  Text="{Binding CatalogueName}" HorizontalTextAlignment="Center"   TextColor="Black" />
+                                            <Label Grid.Row="2" Margin="0,0,0,10" Text="{Binding UploadDate}" HorizontalTextAlignment="Center" VerticalOptions="End" VerticalTextAlignment="End" TextColor="Black" />
+                                            
+                                        </Grid>
+                                    </Grid>
+                                </DataTemplate>
+
+                            </CarouselView.ItemTemplate>
+                        </CarouselView>
+                        <IndicatorView Grid.Row="1"
+                            x:Name="indicatorview"
+                            IndicatorColor="LightGray"
+                            IndicatorSize="10"
+                            SelectedIndicatorColor="#687089" />
+                    </Grid>
+
+
+                </Grid>
+
+
+            </Grid>
+    </Grid>
+         </contr:RoundedCornerView>
+
+        </Grid>
+         </DataTemplate>
+     </CollectionView.ItemTemplate>
+ </CollectionView>
+        
+      
+        
+    </ContentPage.Content>
+</ContentPage>
+
+

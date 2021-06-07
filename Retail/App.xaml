@@ -3,6 +3,247 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Retail.App">
     <Application.Resources>
+        <Color x:Key="WhiteColor">#FFFFFF</Color>
+        <Color x:Key="TransparentColor">Transparent</Color>
+        <Color x:Key="BlackColor">Black</Color>
+        <Color x:Key="BlueColor">#5956D2</Color>
+        <Color x:Key="GreenColor">#008000</Color>
+        <Color x:Key="RedColor">#FF0000</Color>
+        <Color x:Key="GrayColor">#919191</Color>
+        <Color x:Key="PinkColor">#E62E75</Color>
+        <Color x:Key="borderColor">#ECECEC</Color>
+        <Color x:Key="contentBG">#F5F5F5</Color>
+        <Color x:Key="NavigationPrimary">#2D3EE1</Color>
+        <Color x:Key="BottomTab">#FFFFFF</Color>
+        <Color x:Key="LightGray">LightGray</Color> 
+        <Color x:Key="DarkGray">#687089</Color>
+        <Color x:Key="btnbgColor">#E62E75</Color>
+       
 
+        <Font x:Key="TextFont">segoeui</Font>
+        <OnPlatform x:Key="FontFamilyName" x:TypeArguments="x:String" iOS="segoeui" Android="segoeui" />
+        <OnPlatform x:Key="semiFontFamilyName" x:TypeArguments="x:String" iOS="segoeuibold" Android="segoeuibold" />
+
+         <Style x:Key="EnteryTitleLabel" TargetType="Label" >
+             <Setter Property="FontAttributes" Value="Bold"/>
+          <Setter Property="FontFamily" Value="FontName"/>
+           <Setter Property="FontSize" Value="14"/>
+           <Setter Property="TextColor" Value="#A6A6A6"/>
+       </Style>
+
+        <Style x:Key="MyTitleLabel" TargetType="Label" BaseResourceKey="TitleStyle">
+            <Setter Property="FontFamily" Value="FontName"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
+       </Style>
+
+        <Style x:Key="MyValueLabel" TargetType="Label" BaseResourceKey="TitleStyle">
+        <Setter Property="FontFamily" Value="FontName"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="TextColor" Value="{StaticResource DarkGray}"/>
+        </Style>
+        
+        <Style x:Key="EnteryTxtValues" TargetType="Entry" >
+            <Setter Property="FontFamily" Value="segoeui"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
+            <Setter Property="PlaceholderColor" Value="{StaticResource GrayColor}"/>
+       </Style>
+
+        <Style TargetType="Label" x:Key="DashboardButtonLabel">
+            <Setter Property="TextColor" Value="{StaticResource BlueColor}"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="segoeui"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="Opacity" Value="100"/>
+        </Style>
+
+        <Style TargetType="Label" x:Key="LabelBlue">
+            <Setter Property="TextColor" Value="{StaticResource BlueColor}"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontFamily" Value="sf pro text semibold"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="Opacity" Value="100"/>
+        </Style>
+
+        <Style TargetType="Label" x:Key="LabelLargeBlue">
+            <Setter Property="TextColor" Value="{StaticResource BlueColor}"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+             <Setter Property="Opacity" Value="100"/>
+        </Style>
+
+         <Style TargetType="Label" x:Key="LabelLargeBlack">
+            <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+             <Setter Property="Opacity" Value="100"/>
+        </Style>
+
+         <Style TargetType="Label" x:Key="LabelLargeGreen">
+            <Setter Property="TextColor" Value="{StaticResource GreenColor}"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+             <Setter Property="Opacity" Value="100"/>
+        </Style>
+
+         <Style TargetType="Label" x:Key="LabelLargeWhite">
+            <Setter Property="TextColor" Value="{StaticResource WhiteColor}"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+             <Setter Property="Opacity" Value="100"/>
+        </Style>
+
+        <Style TargetType="Label" x:Key="LabelLargeGray">
+            <Setter Property="TextColor" Value="{StaticResource GrayColor}"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+             <Setter Property="Opacity" Value="100"/>
+        </Style>
+
+        <Style TargetType="Label" x:Key="LabelLargeRed">
+            <Setter Property="TextColor" Value="{StaticResource RedColor}"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="Opacity" Value="100"/>
+        </Style>
+
+        <Style TargetType="Label" x:Key="LabelMediumWhite">
+            <Setter Property="TextColor" Value="{StaticResource WhiteColor}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+             <Setter Property="Opacity" Value="100"/>
+        </Style>
+
+         <Style TargetType="Label" x:Key="LabelMediumBlack">
+            <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+             <Setter Property="Opacity" Value="100"/>
+        </Style>
+
+        <Style TargetType="Label" x:Key="LabelMediumGreen">
+            <Setter Property="TextColor" Value="{StaticResource GreenColor}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+             <Setter Property="Opacity" Value="100"/>
+        </Style>
+
+        <Style TargetType="Label" x:Key="LabelMediumRed">
+            <Setter Property="TextColor" Value="{StaticResource RedColor}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+             <Setter Property="Opacity" Value="100"/>
+        </Style>
+
+        <Style TargetType="Label" x:Key="LabelMediumBlue">
+            <Setter Property="TextColor" Value="{StaticResource BlueColor}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="segoemediacentersemibold.ttf"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+             <Setter Property="Opacity" Value="100"/>
+        </Style>
+
+         <Style TargetType="Label" x:Key="LabelMediumGray">
+            <Setter Property="TextColor" Value="{StaticResource GrayColor}"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>           
+             <Setter Property="Opacity" Value="100"/>
+        </Style>
+
+        <Style TargetType="Label" x:Key="Placeholder">
+            <Setter Property="TextColor" Value="{StaticResource GrayColor}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>           
+             <Setter Property="Opacity" Value="100"/>
+        </Style>
+
+        
+        <Style TargetType="Label" x:Key="LabelSmallWhite">
+            <Setter Property="TextColor" Value="{StaticResource WhiteColor}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Opacity" Value="100"/>
+        </Style>
+
+        <Style TargetType="Label" x:Key="LabelSmallBlack">
+            <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Opacity" Value="100"/>
+        </Style>
+
+         <Style TargetType="Label" x:Key="LabelSmallRed">
+            <Setter Property="TextColor" Value="{StaticResource RedColor}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Opacity" Value="100"/>
+        </Style>
+
+         <Style TargetType="Label" x:Key="LabelSmallGreen">
+            <Setter Property="TextColor" Value="{StaticResource GreenColor}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Opacity" Value="100"/>
+        </Style>
+
+        <Style TargetType="Label" x:Key="LabelSmallBlue">
+            <Setter Property="TextColor" Value="{StaticResource BlueColor}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Opacity" Value="100"/>
+        </Style>
+
+         <Style TargetType="Label" x:Key="LabelLeftSideMenu">
+            <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+             <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="Opacity" Value="100"/>
+        </Style>
+
+        <Style TargetType="Button" x:Key="ButtonPinkStyle">            
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="{StaticResource PinkColor}" Offset="0.1"/>
+                        <GradientStop Color="{StaticResource PinkColor}" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+                 <Setter Property="FontFamily" Value="{StaticResource TextFont}"/>
+                 <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                 <Setter Property="FontSize" Value="20" />            
+                 <Setter Property="TextTransform" Value="None"/>
+        </Style>
+
+        <Style TargetType="Button" x:Key="ButtonBlueStyle">
+             
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="{StaticResource BlueColor}" Offset="0.1"/>
+                        <GradientStop Color="{StaticResource BlueColor}" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+                <Setter Property="FontFamily" Value="{StaticResource TextFont}"/>
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="FontSize" Value="20" />            
+                <Setter Property="TextTransform" Value="None"/>
+        </Style>
+
+        
     </Application.Resources>
 </Application>

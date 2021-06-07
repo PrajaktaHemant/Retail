@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Retail.ViewModels.Dashboard"
+    xmlns:ctrl="clr-namespace:Retail.Controls"
+    x:Class="Retail.Views.Dashboard.ExpandableListView">
+
+  
+
+    <ContentPage.Content>
+
+        <StackLayout>
+           
+                <Label  Text="Frist Accordion :" />
+                
+	            <ctrl:Accordion x:Name="MainOne">
+                   <ctrl:Accordion x:Name="SecOne" />
+                </ctrl:Accordion>
+            
+        </StackLayout>
+
+    </ContentPage.Content>
+
+</ContentPage>

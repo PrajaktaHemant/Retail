@@ -5,7 +5,7 @@ namespace Retail.Infrastructure.Hepler
     {
         public static Uri StagingServerUri => new Uri("http://devsrv01.panasonic.ae:82/api/");
         public static Uri LiveServerUri => new Uri("https://prism.panasonic.ae/smartcareApi/api/");
-
+        public static string WebAppUri { get { return "http://devsrv01.panasonic.ae:83/"; } }
         public static Uri ServerBaseUri { get { return StagingServerUri; } }
 
         #region Account
@@ -26,7 +26,9 @@ namespace Retail.Infrastructure.Hepler
         ///GetWarrantyCard
         #endregion
 
-
+        #region SalesTarget
+        public static string SalesTargetData => "";
+        #endregion
 
 
     }

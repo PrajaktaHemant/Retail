@@ -1,18 +1,34 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework> <!--netstandard2.0-->
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebugType>portable</DebugType>
     <DebugSymbols>true</DebugSymbols>
+    <LangVersion>9.0</LangVersion>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <LangVersion>9.0</LangVersion>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.5" />
+    <PackageReference Include="Microsoft.AppCenter" Version="4.2.0" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.2.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.2.0" />
+    <PackageReference Include="Xamarin.Plugin.Calendar" Version="1.2.2936" />
+    <PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.11" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="DLToolkit.Forms.Controls.FlowListView" Version="2.0.11" />
+    <PackageReference Include="Plugin.Permissions" Version="6.0.1" />
+    <PackageReference Include="Xamarin.Controls.SignaturePad.Forms" Version="3.0.0" />
+    <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controls\" />
@@ -30,5 +46,70 @@
     <Folder Include="UIEffects\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Views\" />
+    <Folder Include="Views\SalesTargetViews\" />
+    <Folder Include="ViewModels\SalesTarget\" />
+    <Folder Include="Views\Dashboard\" />
+    <Folder Include="ViewModels\Dashboard\" />
+    <Folder Include="Views\My Visits\" />
+    <Folder Include="ViewModels\My Visits\" />
+    <Folder Include="Enums\" />
+    <Folder Include="Views\Account\" />
+    <Folder Include="ViewModels\Account\" />
+    <Folder Include="ViewModels\ProfileView\" />
+    <Folder Include="Views\ProductCatalogue\" />
+    <Folder Include="ViewModels\ProductCatalogue\" />
+    <Folder Include="Views\DemoControls\" />
+    <Folder Include="ViewModels\DemoControls\" />
+    <Folder Include="ViewModels\ImagePopUp\" />
+    <Folder Include="Views\Market Intelligence\" />
+    <Folder Include="ViewModels\Market Intelligence\" />
+    <Folder Include="ViewModels\MonthYearPickerViewModel\" />
+    <Folder Include="Views\Inventory Stock\" />
+    <Folder Include="ViewModels\Inventory Stock\" />
+    <Folder Include="Views\Attendance\" />
+    <Folder Include="ViewModels\Attendance\" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resx\AppResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Resx\AppResources.Designer.cs">
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SalesTargetViews\ProductCategoryPopupView.xaml.cs">
+      <DependentUpon>ProductCategoryPopupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Controls\TitledDateTimePicker.xaml.cs">
+      <DependentUpon>TitledDateTimePicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Account\ChangePassword.xaml.cs">
+      <DependentUpon>ChangePassword.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Retail.Library\Retail.Infrastructure.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Mono.Android">
+      <HintPath>..\..\..\..\..\Library\Frameworks\Xamarin.Android.framework\Versions\11.2.2.1\lib\xamarin.android\xbuild-frameworks\MonoAndroid\v11.0\Mono.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Android">
+      <HintPath>..\..\..\..\..\..\Library\Frameworks\Xamarin.Android.framework\Versions\11.2.2.1\lib\xamarin.android\xbuild-frameworks\MonoAndroid\v11.0\Mono.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing.Common">
+      <HintPath>..\..\..\..\..\..\Library\Frameworks\Xamarin.Android.framework\Versions\11.2.2.1\lib\xamarin.android\xbuild-frameworks\MonoAndroid\v1.0\Facades\System.Drawing.Common.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+  <!-- https://bugzilla.xamarin.com/show_bug.cgi?id=55591 -->
+  <None Remove="**\*.xaml" />
+
+  <Compile Update="**\*.xaml.cs" DependentUpon="ConfirmSalesDataEntryPopup.xaml" />
+</ItemGroup>
+
+
 </Project>

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:contr="clr-namespace:Retail.Controls"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="true"
+    x:Class="Retail.Views.MyVisits.TaskSummaryView"
+    x:Name="Root"
+    FlowDirection="{Binding flowDirection}"
+    BackgroundColor="{StaticResource contentBG}"
+    Title="Task Summary">
+    <ContentPage.Content>
+        <Grid Padding="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>                
+            </Grid.RowDefinitions>
+                      
+            <Grid Padding="5" Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <contr:RoundedCornerView   Grid.Row="0" BorderColor="{StaticResource borderColor}" BorderWidth="1" RoundedCornerRadius="12"  >                         
+                    <Grid BackgroundColor="{StaticResource WhiteColor}" Padding="8">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>                           
+                        </Grid.RowDefinitions>                                                  
+                        <Label Grid.Row="0"  Text="{Binding TaskName}" Style="{StaticResource LabelLargeBlack}" />
+                        <Label Grid.Row="1"  Text="{Binding StoreAddress}" Style="{StaticResource LabelSmallBlack}"  />                                          
+                    </Grid>
+                </contr:RoundedCornerView>
+            </Grid>
+
+            <Grid Padding="5" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <contr:RoundedCornerView Grid.Row="0" BorderColor="{StaticResource borderColor}" BorderWidth="1" RoundedCornerRadius="12"  >  
+                    <Grid BackgroundColor="{StaticResource WhiteColor}" Padding="8">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>                                
+                        </Grid.RowDefinitions>                                                  
+                             
+                        <contr:RoundedCornerView Grid.Row="0" HorizontalOptions="End" BorderColor="{StaticResource BlueColor}" BorderWidth="1" RoundedCornerRadius="6" BackgroundColor="{StaticResource TransparentColor}">
+                            <Grid Padding="10" BackgroundColor="{StaticResource BlueColor}" VerticalOptions="FillAndExpand">
+                                <Image Grid.Row="0" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" x:Name="tempimage" Source="next.png" HeightRequest="20" WidthRequest="20"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="Actions" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" VerticalOptions="Center"  Style="{StaticResource LabelMediumWhite}" />
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                            Command="{Binding ActionCommand}"                                                    
+                                            NumberOfTapsRequired="1" />
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                        </contr:RoundedCornerView>
+
+                        <Label Grid.Row="1" Text="Description" Style="{StaticResource LabelLargeGray}"/>
+                        <Label Grid.Row="2" Text="visit store and follow...." Style="{StaticResource LabelSmallBlack}"/>
+
+                        <Label Grid.Row="4" Text="Created By" Style="{StaticResource LabelLargeGray}"/>
+                        <Label Grid.Row="5" Text="Office supervisor name" Style="{StaticResource LabelSmallBlack}"/>
+
+
+                    </Grid>
+                </contr:RoundedCornerView>
+            </Grid>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

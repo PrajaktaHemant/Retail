@@ -19,5 +19,6 @@ namespace Retail.Infrastructure.ResponseModels
         public int? PersonRoleId { get; set; }
         public int? PersonStatusId { get; set; }
         public int? ProfilePictureFileInfoId { get; set; }
+        public virtual FileInfoResponse ProfilePictureFileInfo { get; set; }
     }
 }

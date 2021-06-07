@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+    
+    x:Class="Retail.Views.DemoControls.TakePhotoAndDisplay"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:vm="clr-namespace:Retail.ViewModels.DemoControls" 
+    ios:Page.UseSafeArea="true"
+    Title="Take Photo and Display">
+     
+    <ContentPage.Content>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="0" Text="Select Photo From Gallery" Clicked="Button_Clicked_2">
+                <!--<Button.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="TapGestureRecognizer_Tapped"
+                        NumberOfTapsRequired="1"/>
+                </Button.GestureRecognizers>-->
+            </Button>
+           <CollectionView  Grid.Row="1" x:Name="DisplayImageList">    <!--ItemsSource="{Binding Source={x:Reference Root},Path=BindingContext.BrochureData}"-->           
+                                 <CollectionView.ItemsLayout>
+                                 <GridItemsLayout Orientation="Vertical" Span="3" />
+                  
+                                </CollectionView.ItemsLayout>
+
+                                 <CollectionView.ItemTemplate>
+
+                                 <DataTemplate>
+             
+                                    <Grid Padding="5" RowSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" />                           
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />                             
+                                        </Grid.RowDefinitions>              
+                                        <Image Source="{Binding .}"/>                                        
+                                        
+                                    </Grid>    
+                                 </DataTemplate>
+                             </CollectionView.ItemTemplate>
+                            </CollectionView>      
+            <!--<Image Grid.Row="1" x:Name="DisplayPhoto" Aspect="AspectFill" />-->
+
+            <!--<CollectionView x:Name="DisplayImages" ItemsSource="{Binding Media}" HeightRequest="100" Grid.Row="1">
+               
+                 <CollectionView.ItemsLayout>
+                 <GridItemsLayout Orientation="Vertical" Span="3" />
+                  
+                </CollectionView.ItemsLayout>
+
+                 <CollectionView.ItemTemplate>
+
+                 <DataTemplate>
+             
+                    <Grid Padding="5" RowSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                           
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />                             
+                        </Grid.RowDefinitions>              
+                        <Image Source="{Binding ImageURL}">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                    Tapped="TapGestureRecognizer_Tapped"
+                                    NumberOfTapsRequired="1" />
+                        </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>    
+                 </DataTemplate>
+             </CollectionView.ItemTemplate>
+            </CollectionView>-->
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

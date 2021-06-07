@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:contr="clr-namespace:Retail.Controls"
+    xmlns:forms="clr-namespace:SignaturePad.Forms;assembly=SignaturePad.Forms"
+    x:Class="Retail.Views.DemoControls.AddDynamicControl"
+     x:Name="root">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Entry x:Name="TxtModelNumber" Text="{Binding ModelNumber}" Grid.Column="0" Placeholder="Model Number"/>
+                 <Entry Grid.Column="1" Text="{Binding Quantity}" Placeholder="Quantity" />
+                 <Button Grid.Column="2" x:Name="Create" Text="Add" Command="{Binding AddControlCmmand}"/>
+            
+            </Grid>
+            <Grid Grid.Row="1"  BackgroundColor="Transparent" Padding="10,0,10,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <CollectionView   Grid.Row="0" ItemsSource="{Binding ModelLists}" SelectedItem="{Binding }"  BackgroundColor="Transparent" EmptyView="No Product">  
+                <CollectionView.EmptyViewTemplate>
+                    <DataTemplate>
+
+                        <Label  HorizontalTextAlignment="Center" VerticalTextAlignment="Start" FontSize="15"  Style="{StaticResource EnteryTxtValues}" Text="No Products" HeightRequest="60" />
+           
+      
+                    </DataTemplate>
+                </CollectionView.EmptyViewTemplate>
+                <CollectionView.ItemTemplate>  
+                   <DataTemplate>  
+
+                       <Grid BackgroundColor="Transparent" Padding="5,0,5,0">
+                           <Grid.RowDefinitions>
+                               <RowDefinition Height="auto"/>
+                               <RowDefinition Height="auto"/>
+                               <RowDefinition Height="auto"/>
+                           </Grid.RowDefinitions>
+                       
+                                  <contr:RoundedCornerView Margin="10,0,10,0" Grid.Row="0" BorderColor="{StaticResource borderColor}" BorderWidth="2" RoundedCornerRadius="12">
+                                      <Grid Grid.Row="1" Padding="0,0,10,0" BackgroundColor="White">
+                                          <Grid.ColumnDefinitions>
+                                              <ColumnDefinition Width="auto"/>
+                                              <ColumnDefinition Width="auto"/>
+                                              <ColumnDefinition Width="auto"/>
+                                              <ColumnDefinition Width="auto"/>
+                                          </Grid.ColumnDefinitions>
+                                          <Grid.RowDefinitions>
+                                              <RowDefinition Height="auto"/>
+                                              <RowDefinition Height="auto"/>
+                                              <RowDefinition Height="auto"/>
+                                              <RowDefinition Height="auto"/>
+                                          </Grid.RowDefinitions>                                        
+                                          
+
+                                           <Label Grid.Row="0" Grid.Column="0" Text="{Binding ModelNo}" LineBreakMode="WordWrap" Style="{StaticResource EnteryTxtValues}" />
+                                                
+                                           <Label Grid.Row="0" Grid.Column="1" Text="{Binding Qty}" LineBreakMode="WordWrap" Style="{StaticResource EnteryTxtValues}"/>
+                                                   
+                                           <Button Grid.Row="0" Grid.Column="2" Text="Edit" Command="{Binding BindingContext.EditCommand, Source={x:Reference Name=root}}" CommandParameter="{Binding .}" />
+                                                        
+                                           <Button Grid.Row="0" Grid.Column="3" Text="Delete" Command="{Binding BindingContext.DeleteCommand, Source={x:Reference Name=root}}" CommandParameter="{Binding .}" />
+                                        
+                                        
+                                      </Grid>
+                                  </contr:RoundedCornerView>                                  
+                                      
+                           </Grid>
+                   </DataTemplate>  
+               </CollectionView.ItemTemplate>  
+   </CollectionView> 
+        </Grid>
+            
+        <StackLayout VerticalOptions="Start" Grid.Row="2">
+            <Entry Focused="Entry_Focused" Placeholder="Please select" x:Name="entry"/>
+        </StackLayout>
+ 
+            <!--<Grid Grid.Row="2">
+                 <contr:RoundedCornerView Margin="0,0,0,0" Grid.Row="2" BorderColor="{StaticResource borderColor}" BorderWidth="2" RoundedCornerRadius="12" BackgroundColor="White">
+         
+                            <Grid Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                     <RowDefinition Height="150"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Text="Customer Signature" Style="{StaticResource EnteryTxtValues}"  FontAttributes="Bold"/>
+                                <forms:SignaturePadView x:Name="Signature" Grid.Row="1" BackgroundColor="White" WidthRequest="250" HeightRequest="350" StrokeColor="Black" IsBlank="{Binding IsSigBlank}"  StrokeWidth="3" />
+                            </Grid>
+                </contr:RoundedCornerView>
+            </Grid>-->
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Retail.Views.Account.LoginPage"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:contr="clr-namespace:Retail.Controls"
+     xmlns:lang="clr-namespace:Retail.Hepler"
+    BackgroundColor="{StaticResource WhiteColor}"
+    FlowDirection="{Binding flowDirection}"
+    Title="Login">
+ <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="btnLangu"  Order="Primary" Text="English" Priority="0" Clicked="ToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+   
+      <ContentPage.Content>
+
+     
+        <Grid BackgroundColor="White" VerticalOptions="FillAndExpand" Padding="0,0,0,0" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="7*"/>
+            </Grid.RowDefinitions>
+             
+             <Image Source="topbg.png" Margin="0,-100,0,0" Grid.Row="0" Grid.RowSpan="2" Aspect="AspectFill" BackgroundColor="White" VerticalOptions="StartAndExpand"/>
+            <Grid Grid.Row="0" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8*"/>
+                     <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="" Grid.Row="0" Grid.Column="0" TextColor="White" FontAttributes="Bold" >
+                    <Label.FontSize>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="Android">20</On>
+                            <On Platform="iOS">20</On>
+                        </OnPlatform>
+                    </Label.FontSize>
+                </Label>
+                <Label x:Name="lblLong" Text="English" Grid.Row="0" Grid.Column="1" TextColor="White" FontAttributes="Bold">
+                    <Label.FontSize>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="Android">20</On>
+                            <On Platform="iOS">20</On>
+                        </OnPlatform>
+                    </Label.FontSize>
+                      <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                   Tapped="ToolbarItem_Clicked"
+                                    NumberOfTapsRequired="1" />
+                      </Label.GestureRecognizers>
+                </Label>
+                <Grid.Padding>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="Android">10,30,0,0</On>
+                        <On Platform="iOS">10,70,0,0</On>
+                    </OnPlatform>
+                 </Grid.Padding> 
+            </Grid>
+              <Image Source="pslogo.png" VerticalOptions="Start"  Aspect="AspectFit" Grid.Row="0" Grid.RowSpan="2"   >
+                  <Image.HeightRequest>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="Android">140</On>
+                        <On Platform="iOS">170</On>
+                    </OnPlatform>
+                 </Image.HeightRequest>
+                  <Image.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <On Platform="Android">0,50,0,0</On>
+                                    <On Platform="iOS">0,100,0,0</On>
+                                </OnPlatform>
+                             </Image.Margin>
+              </Image>
+              
+              <StackLayout Grid.Row="1" Grid.RowSpan="2" Padding="0,10,0,0"  >
+                     <Grid Padding="40,0,40,0" VerticalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="8*"/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+                         
+                         <Grid Grid.Row="0" Padding="0,0,0,0">
+                             <Grid.Padding>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <On Platform="Android">0,20,0,0</On>
+                                    <On Platform="iOS">0,60,0,0</On>
+                                </OnPlatform>
+                             </Grid.Padding>
+                             <Grid.RowDefinitions>
+                                
+                                 <RowDefinition Height="auto"/>
+                                  <RowDefinition Height="auto"/>
+                                  <RowDefinition Height="auto"/>
+                             </Grid.RowDefinitions>
+                            
+                             <Grid Padding="10" Grid.Row="0">
+                                 <Grid.RowDefinitions>
+                                     <RowDefinition Height="auto"/>
+                                     <RowDefinition Height="auto"/>
+                                     <RowDefinition Height="auto"/>
+                                     <RowDefinition Height="40"/>
+                                     <RowDefinition Height="auto"/>
+                                 </Grid.RowDefinitions>
+                                  <Grid Grid.Row="0" RowSpacing="0" >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="1"/>
+                                            </Grid.RowDefinitions>
+                                            
+           
+                                            <contr:ImageEntry Margin="0,0,0,0" Grid.Row="1"  HeightRequest="40"  BackgroundColor="Transparent"  Text="{Binding Email}" Placeholder="Email or Mobile Number"  Style="{StaticResource EnteryTxtValues}"  VerticalOptions="Start" VerticalTextAlignment="Center"
+                                                                MaxLength="40"  FontSize="{Binding FontSize}" HorizontalTextAlignment="Start"
+                                                                />
+                                                  <BoxView Grid.Row="2" BackgroundColor="#B4B1B1" VerticalOptions="Start"/>
+                                    </Grid>
+                                   <Grid Grid.Row="1" RowSpacing="0" >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="1"/>
+                                            </Grid.RowDefinitions>
+                                            
+           
+                                            <contr:ImageEntry Margin="0,0,0,0" Grid.Row="1" IsPassword="True" HeightRequest="40"  BackgroundColor="Transparent"  Text="{Binding Password}" Placeholder="Password"  Style="{StaticResource EnteryTxtValues}"  VerticalOptions="Start" VerticalTextAlignment="Center"
+                                                                MaxLength="40"  FontSize="{Binding FontSize}" HorizontalTextAlignment="Start"
+                                                                />
+                                                  <BoxView Grid.Row="2" BackgroundColor="#B4B1B1" VerticalOptions="Start"/>
+                                    </Grid>
+                                  
+                                          <Label Text="{lang:Translate lblForgotPassword}" TextColor="{StaticResource btnbgColor}" Grid.Row="2" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand">
+                                              <Label.FontSize>
+                                                        <OnPlatform x:TypeArguments="x:Double" iOS="15" Android="15"/>
+                                                     </Label.FontSize>
+                                              <Label.GestureRecognizers>
+                                         <TapGestureRecognizer
+                                               Command="{Binding ForgotPwdCommand}"
+                                                NumberOfTapsRequired="1" />
+                      </Label.GestureRecognizers>
+                                </Label>
+                                 <Button Grid.Row="4" Command="{Binding SignInCommand}" Text="{lang:Translate lblSignin}" BackgroundColor="#E62E75" TextColor="White" FontAttributes="Bold"  FontSize="15"/>
+
+                         
+                             </Grid>
+                           <Grid Grid.Row="1" VerticalOptions="Center">
+                               <Grid.ColumnDefinitions>
+                                   <ColumnDefinition Width="30"/>
+                                   <ColumnDefinition Width="*"/>
+                               </Grid.ColumnDefinitions>
+                               <CheckBox Grid.Column="0" IsChecked="{Binding IspsswordSave}" VerticalOptions="Center"/>
+                               <Label Grid.Column="1" Text="Remember my password" TextColor="Gray" VerticalTextAlignment="Center" >
+                                    <Label.FontSize>
+                                            <OnPlatform x:TypeArguments="x:Double" iOS="15" Android="15"/>
+                                         </Label.FontSize>
+                                   </Label>
+                               <Grid.GestureRecognizers>
+                             <TapGestureRecognizer
+                                   Command="{Binding SelectedSavePasswordCommand}"
+                                    NumberOfTapsRequired="1" />
+                      </Grid.GestureRecognizers>
+                           </Grid>
+                                   
+                                    <Grid Grid.Row="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="6*"/>
+                                         <ColumnDefinition Width="4*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text="Not yet registered?" TextColor="#D2D0D0" HorizontalTextAlignment="End"  FontAttributes="Bold">
+                                        <Label.FontSize>
+                                            <OnPlatform x:TypeArguments="x:Double" iOS="15" Android="17"/>
+                                         </Label.FontSize>
+                                    </Label>
+                                    <Label Grid.Column="1" Text="Register now" TextColor="#3F50C1" HorizontalTextAlignment="Start" FontAttributes="Bold">
+                                        <Label.FontSize>
+                                            <OnPlatform x:TypeArguments="x:Double" iOS="15" Android="17"/>
+                                         </Label.FontSize>
+                                    </Label>
+                                     <Grid.GestureRecognizers>
+                             <TapGestureRecognizer
+                                   Command="{Binding SignUpCommand}"
+                                    NumberOfTapsRequired="1" />
+                      </Grid.GestureRecognizers>
+                                </Grid>
+                         </Grid>
+                         <Grid Grid.Row="1">
+                             <Grid.RowDefinitions>
+                                 <RowDefinition Height="auto"/>
+                                 <RowDefinition Height="auto"/>
+                             </Grid.RowDefinitions>
+                               <Image Source="plogo.png" Grid.Row="0" Aspect="AspectFit" HeightRequest="30" HorizontalOptions="FillAndExpand"/>
+                   
+                         </Grid>
+                   
+                        </Grid>
+                        <Picker x:Name="pkLong" IsVisible="false" ItemsSource="{Binding languages}" ItemDisplayBinding="{Binding LongName}" SelectedIndexChanged="Picker_SelectedIndexChanged" ios:Picker.UpdateMode="WhenFinished" SelectedItem="{Binding SelectedLanguage}"/>
+               </StackLayout>
+             </Grid>
+          
+    </ContentPage.Content>
+</ContentPage>

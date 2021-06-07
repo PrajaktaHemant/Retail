@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Retail.Controls.TitleDropdownView">
+    <ContentView.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Style="{StaticResource EnteryTitleLabel}" x:Name="LabelTitle" Text="{Binding Title}"   VerticalTextAlignment="Center"/>
+             <Grid Grid.Row="1" VerticalOptions="Start"  BackgroundColor="Transparent" >
+                  <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="7*"/>
+                       <ColumnDefinition Width="3*"/>
+                      <ColumnDefinition Width="2"/>
+                  </Grid.ColumnDefinitions>
+                 <Grid.RowDefinitions>
+                     <RowDefinition Height="auto"/>
+                     <RowDefinition Height="1"/>
+                 </Grid.RowDefinitions>
+                  <Picker VerticalOptions="End" x:Name="dropdown" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  BackgroundColor="White" HorizontalTextAlignment="Start"
+                               ItemsSource="{Binding PickerItemsSource}" ItemDisplayBinding="{Binding Title}" SelectedItem="{Binding SelectedItem, Mode=OneWay}"
+                                   TitleColor="Gray" SelectedIndexChanged="dropdown_SelectedIndexChanged" 
+                                    
+                                Style="{StaticResource EnteryTxtValues}"     Title="{Binding Placeholder}" >
+                     
+                  </Picker>
+                  <Image Grid.Column="1" Source="dropdown" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="Center"  HeightRequest="30" WidthRequest="30">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                   Tapped="TapGestureRecognizer_Tapped"
+                                    NumberOfTapsRequired="1" />
+                      </Image.GestureRecognizers>
+                 </Image>
+                 <BoxView Grid.Row="1" Grid.ColumnSpan="3" BackgroundColor="#DADADA" VerticalOptions="Start"/>
+              </Grid>
+          
+            
+                       
+        </Grid>
+    </ContentView.Content>
+</ContentView>

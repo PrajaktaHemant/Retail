@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:Retail.Controls"
+    x:Class="Retail.Views.MyVisits.StoreSelection"
+    BackgroundColor="{StaticResource contentBG}"
+    Title="Select Store">
+    <ContentPage.Content>
+       <Grid>
+             <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>                     
+             </Grid.RowDefinitions>
+             <Grid Grid.Row="0" Padding="10,5,10,0">
+                <controls:RoundedCornerView BorderColor="{StaticResource borderColor}" BorderWidth="1" RoundedCornerRadius="12">
+                    <SearchBar x:Name="SearchStore" PlaceholderColor="{StaticResource GrayColor}" BackgroundColor="{StaticResource WhiteColor}" Placeholder="Search Store" SearchButtonPressed="SearchStore_SearchButtonPressed" TextChanged="SearchStore_TextChanged"/>
+                </controls:RoundedCornerView>
+             </Grid>
+             <Grid Grid.Row="1" Padding="5,0,5,0"  >
+                <CollectionView Grid.Row="0" ItemsSource="{Binding StoreSelections}" BackgroundColor="{StaticResource TransparentColor}" EmptyView="No Products">
+                    <CollectionView.EmptyViewTemplate>
+                    <DataTemplate>
+                        <Label  HorizontalTextAlignment="Center" VerticalTextAlignment="Start" Style="{StaticResource LabelMediumBlack}" Text="No history available!!!" HeightRequest="60" />                
+                    </DataTemplate>
+                </CollectionView.EmptyViewTemplate>
+                <CollectionView.ItemTemplate>  
+                    <DataTemplate>
+                        <Grid Padding="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>                            
+                            <controls:RoundedCornerView   Grid.Row="0" BorderColor="{StaticResource borderColor}" BorderWidth="1" RoundedCornerRadius="12"  >
+                         
+                                <Grid BackgroundColor="{StaticResource WhiteColor}" Padding="8">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>                                       
+                                    </Grid.RowDefinitions>
+                                        
+                                    <Label Grid.Row="0" HorizontalOptions="Start" Text="{Binding StoreName}" LineBreakMode="WordWrap" Style="{StaticResource LabelLargeBlack}" />
+                                    <Label Grid.Row="1" HorizontalOptions="Start" Text="{Binding StoreAddress}" LineBreakMode="WordWrap" Style="{StaticResource LabelSmallBlack}" />
+
+                                    <Label Grid.Row="2"  LineBreakMode="WordWrap" Style="{StaticResource LabelSmallBlack}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Distance : " Style="{StaticResource LabelSmallBlack}"/>
+                                                <Span Text="{Binding Distance}" Style="{StaticResource LabelSmallBlack}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>                                       
+                                </Grid>
+
+                            </controls:RoundedCornerView>
+                       </Grid>
+                    </DataTemplate>  
+                </CollectionView.ItemTemplate>  
+                </CollectionView>           
+            </Grid>
+             <Grid Grid.Row="2" Padding="5,0,5,0">
+                 <Button Grid.Row="0" Grid.Column="0" HeightRequest="40" Text="Done" TextColor="{StaticResource WhiteColor}" IsEnabled="{Binding IsEnableCheckIn}" Command="{Binding CheckinCommand}"  BorderWidth="1" CornerRadius="6" BackgroundColor="{Binding CheckInBackgroungColor}"/>
+                 <Button Grid.Row="0" Grid.Column="1" HeightRequest="40" Text="Back" TextColor="{StaticResource WhiteColor}" IsEnabled="{Binding IsEnableCheckOut}" Command="{Binding CheckoutCommand}"  BorderWidth="1" CornerRadius="6" BackgroundColor="{Binding CheckOutBackgroungColor}"/>
+             </Grid>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

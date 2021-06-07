@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    x:Class="Retail.Controls.TitledDateTimePicker">
+    <ContentView.Content>
+       <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <!--<Label Style="{StaticResource EnteryTitleLabel}" Grid.Row="0" x:Name="LabelTitle" Text="{Binding Title}"   VerticalTextAlignment="Center"/>-->
+              <Grid Grid.Row="0" VerticalOptions="Center" >
+                 <Grid.ColumnDefinitions>
+                     <ColumnDefinition Width="7*"/>
+                     <ColumnDefinition Width="3*"/>                    
+                 </Grid.ColumnDefinitions>
+                   <Grid.RowDefinitions>
+                     <RowDefinition Height="auto"/>
+                     <RowDefinition Height="1"/>
+                 </Grid.RowDefinitions>
+                 <DatePicker x:Name="dPicker"  Format="dd-MM-yyyy" VerticalOptions="End" Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="3" MinimumDate="01/01/1980" MaximumDate="{x:Static sys:DateTime.Now}" HeightRequest="40" Date="{Binding SDate}" DateSelected="dPicker_DateSelected" 
+                                Style="{StaticResource EnteryTxtValues}"  BackgroundColor="White"
+                                />
+                 <Image x:Name="imgDP" Grid.Column="1" Source="calendar" Aspect="AspectFit" HorizontalOptions="EndAndExpand" Margin="0,0,2,0" HeightRequest="30" WidthRequest="30">
+                      <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                    Tapped="TapGestureRecognizer_Tapped"
+                                    NumberOfTapsRequired="1" />
+                      </Image.GestureRecognizers>
+                 </Image>                   
+             </Grid>
+             
+        </Grid> 
+    </ContentView.Content>
+</ContentView>

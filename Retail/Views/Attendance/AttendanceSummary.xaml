@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:Retail.Controls"
+    x:Class="Retail.Views.Attendance.AttendanceSummary"
+    BackgroundColor="{StaticResource contentBG}"
+    Title="Attendance Summary">
+    <ContentPage.Content>
+         <Grid>
+             <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>                     
+             </Grid.RowDefinitions>
+             <Grid Grid.Row="0" Padding="10">
+                <controls:RoundedCornerView BorderColor="{StaticResource borderColor}" BorderWidth="1" RoundedCornerRadius="12">
+                    <SearchBar x:Name="SearchStore" PlaceholderColor="{StaticResource GrayColor}" BackgroundColor="{StaticResource WhiteColor}" Placeholder="Search Store" SearchButtonPressed="SearchStore_SearchButtonPressed" TextChanged="SearchStore_TextChanged"/>
+                </controls:RoundedCornerView>
+             </Grid>
+            <Grid Padding="5" Grid.Row="1" >
+                <CollectionView Grid.Row="0" ItemsSource="{Binding _AttendanceSummary}" BackgroundColor="{StaticResource TransparentColor}" EmptyView="No Products">
+                    <CollectionView.EmptyViewTemplate>
+                    <DataTemplate>
+                        <Label  HorizontalTextAlignment="Center" VerticalTextAlignment="Start" Style="{StaticResource LabelMediumBlack}" Text="No history available!!!" HeightRequest="60" />                
+                    </DataTemplate>
+                </CollectionView.EmptyViewTemplate>
+                <CollectionView.ItemTemplate>  
+                    <DataTemplate>
+                        <Grid Padding="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>                            
+                                <controls:RoundedCornerView   Grid.Row="0" BorderColor="{StaticResource borderColor}" BorderWidth="1" RoundedCornerRadius="12"  >
+                         
+                                    <Grid BackgroundColor="{StaticResource WhiteColor}" Padding="8">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Row="0" HorizontalOptions="Start" Text="{Binding PromoterName}" LineBreakMode="WordWrap" Style="{StaticResource LabelLargeBlack}" />
+                                        <Label Grid.Row="0" HorizontalOptions="End" Text="{Binding AttendanceDate}" LineBreakMode="WordWrap" Style="{StaticResource LabelLargeBlack}" />
+
+                                        <Label Grid.Row="1"  LineBreakMode="WordWrap" Style="{StaticResource LabelSmallBlack}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Location : " Style="{StaticResource LabelLargeBlack}"/>
+                                                    <Span Text="{Binding StoreName}" Style="{StaticResource LabelLargeBlack}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label Grid.Row="2" HorizontalOptions="Start" Text="Check-in Time" Style="{StaticResource LabelMediumBlack}" />
+                                        <Label Grid.Row="3" HorizontalOptions="Start" Text="{Binding HistoryCheckInTime}" Style="{StaticResource LabelMediumBlack}" />
+                                        <Label Grid.Row="2" HorizontalOptions="End" Text="Check-out Time" Style="{StaticResource LabelMediumBlack}" />
+                                        <Label Grid.Row="3" HorizontalOptions="End" Text="{Binding HistoryCheckOutTime}" Style="{StaticResource LabelMediumBlack}"/>
+                                    </Grid>
+                                </controls:RoundedCornerView>
+                            </Grid>
+                    </DataTemplate>  
+                </CollectionView.ItemTemplate>  
+                </CollectionView>           
+            </Grid>
+         </Grid>
+    </ContentPage.Content>
+</ContentPage>

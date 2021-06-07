@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:contr="clr-namespace:Retail.Controls"
+    x:Class="Retail.Views.SalesTargetViews.SalesDataReturnEntry"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"    
+    ios:Page.UseSafeArea="true"
+    x:Name="root"
+    BackgroundColor="{StaticResource contentBG}"
+    Title="Sales Data Return Entry"
+    >
+    <ContentPage.Content>
+        <Grid Padding="5" VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>                
+            </Grid.RowDefinitions>                         
+                <Grid>
+                    <Grid.Padding>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="Android">0,0,0,0</On>
+                        <On Platform="iOS">0,0,0,0</On>
+                    </OnPlatform>
+                    </Grid.Padding>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>                           
+                    </Grid.RowDefinitions>
+                            
+                    <Grid Padding="5" Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>                           
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" Padding="5,0,5,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>                                                                                 
+                            </Grid.RowDefinitions>                                            
+                            <Label Grid.Row="0" Text="Sales Entry Date" Margin="2"  />
+                             <contr:MonthYearPickerView Grid.Row="1"
+                                BackgroundColor="White"
+                                TextColor="Black"
+                                Date="{Binding Date}"
+                                MinDate="01.01.1900"
+                                MaxDate="12.31.2099"
+                                HeightRequest="40"
+                                FontSize="15"                                                  
+                                HorizontalOptions="StartAndExpand"
+                                />
+                        </Grid>
+
+                        <Grid Grid.Row="1" Padding="5,0,5,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>                                                                          
+                            </Grid.RowDefinitions>                                
+                            <contr:RoundedCornerView HeightRequest="50"  Grid.Row="0" BorderColor="{StaticResource BlueColor}" BorderWidth="1" RoundedCornerRadius="6" BackgroundColor="{StaticResource TransparentColor}">
+                                <Grid BackgroundColor="{StaticResource BlueColor}" VerticalOptions="FillAndExpand">
+                                <Label Text="Get Sales Transactions" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" VerticalOptions="Center"  Style="{StaticResource LabelLargeWhite}" />
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                            Command="{Binding GetSalesTransactionCommand}"                                                    
+                                            NumberOfTapsRequired="1" />
+                                </Grid.GestureRecognizers>
+                                </Grid>
+                            </contr:RoundedCornerView>                           
+                        </Grid>
+
+                        <Grid Grid.Row="2" Padding="5,0,5,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>     
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Text="Model" Margin="2" />
+                                <Label Grid.Row="0" Grid.Column="1" Text="Quantity" Margin="2" />
+                                <Label Grid.Row="0" Grid.Column="2" Text="Unit Price(AED)" Margin="2" />
+                                    
+                            <contr:EntryWithRoundedCorner x:Name="txtModelNo" Placeholder="Model Number" HeightRequest="40" Text="{Binding ModelNumber}"
+                                Margin="0,0,2,0" Grid.Row="1" Grid.Column="0" BackgroundColor="{StaticResource WhiteColor}" 
+                                BorderRadius="12"  BorderColor="{StaticResource WhiteColor}" BorderWidth="10" IsEnabled="False"/>
+
+                            <contr:EntryWithRoundedCorner Placeholder="Quantity" HeightRequest="40" Text="{Binding Quantity}"
+                                    Margin="0,0,2,0" Grid.Row="1" Grid.Column="1" BackgroundColor="{StaticResource WhiteColor}" 
+                                    BorderRadius="12"  BorderColor="{StaticResource WhiteColor}" BorderWidth="10" />
+
+                            <contr:EntryWithRoundedCorner Placeholder="Unit Price" HeightRequest="40" Text="{Binding UnitPrice}"
+                                    Margin="0,0,2,0" Grid.Row="1" Grid.Column="2" BackgroundColor="{StaticResource WhiteColor}" 
+                                    BorderRadius="12"  BorderColor="{StaticResource WhiteColor}" BorderWidth="10" />
+
+                            <Image Grid.Row="1" Grid.Column="3" Source="plus.png" HeightRequest="10" WidthRequest="10">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding AddEntriesCommand}" />
+                                </Image.GestureRecognizers>
+                            </Image>                                
+                        </Grid>
+
+                        <Grid Grid.Row="3" Padding="5,0,5,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>  
+                            </Grid.RowDefinitions>                                            
+                            <CollectionView Grid.Row="0" ItemsSource="{Binding ModelReturnEntryLists}" BackgroundColor="Transparent">                                  
+                                <CollectionView.ItemTemplate>  
+                                    <DataTemplate> 
+                                        <Grid BackgroundColor="White" >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>                                                
+                                            </Grid.RowDefinitions>                       
+                                            <contr:RoundedCornerView Padding="5,0,5,0" Grid.Row="0"  BorderColor="{StaticResource borderColor}" BorderWidth="2" RoundedCornerRadius="10">
+                                                <Grid Grid.Row="1" Padding="5">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="2*"/>                                                           
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions> 
+
+                                                    <Label  Grid.Row="0" Grid.Column="0" VerticalOptions="Center" Text="{Binding ModelNo}" LineBreakMode="WordWrap" Style="{StaticResource LabelMediumBlack}"   />                                                
+                                                    <Label  Grid.Row="0" Grid.Column="1" VerticalOptions="Center" Text="{Binding Qty}" LineBreakMode="WordWrap"  Style="{StaticResource LabelMediumBlack}" />
+                                                    <Label  Grid.Row="0" Grid.Column="2" VerticalOptions="Center" Text="{Binding Price}" LineBreakMode="WordWrap" Style="{StaticResource LabelMediumBlack}"  />                                                   
+                                                    <Image  Grid.Row="0" Grid.Column="3" HeightRequest="20" WidthRequest="20" Source="plus.png"  >
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer
+                                                                Command="{Binding BindingContext.EditCommand, Source={x:Reference Name=root}}"
+                                                                CommandParameter="{Binding .}"/>
+                                                        </Image.GestureRecognizers>
+                                                    </Image>
+                                                </Grid>
+                                            </contr:RoundedCornerView>                                                                        
+                                        </Grid>
+                                    </DataTemplate>  
+                                </CollectionView.ItemTemplate>  
+                            </CollectionView>
+                            <CollectionView Grid.Row="1" ItemsSource="{Binding UpdatedModelReturnEntryLists}" BackgroundColor="Transparent">                                  
+                                <CollectionView.ItemTemplate>  
+                                    <DataTemplate> 
+                                        <Grid BackgroundColor="White" >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>                                                
+                                            </Grid.RowDefinitions>                       
+                                            <contr:RoundedCornerView Padding="5,0,5,0" Grid.Row="0" BorderColor="{StaticResource borderColor}" BorderWidth="2" RoundedCornerRadius="10">
+                                                <Grid Grid.Row="0" Padding="5"  BackgroundColor="White">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="2*"/>                                                           
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions> 
+
+                                                    <Label  Grid.Row="0" Grid.Column="0" VerticalOptions="Center" Text="{Binding ModelNo}" LineBreakMode="WordWrap" Style="{StaticResource LabelSmallRed}" />                                                
+                                                    <Label  Grid.Row="0" Grid.Column="1" VerticalOptions="Center" Text="{Binding Qty}" LineBreakMode="WordWrap"  Style="{StaticResource LabelSmallRed}" />
+                                                    <Label  Grid.Row="0" Grid.Column="2" VerticalOptions="Center" Text="{Binding Price}" LineBreakMode="WordWrap"  Style="{StaticResource LabelSmallRed}" />
+                                                    <Image  Grid.Row="0" Grid.Column="3" HeightRequest="20" WidthRequest="20"/>
+
+                                                </Grid>
+                                            </contr:RoundedCornerView>
+                                        </Grid>
+                                    </DataTemplate>  
+                                </CollectionView.ItemTemplate>  
+                            </CollectionView> 
+                        </Grid>
+
+                        <Grid Grid.Row="4" RowSpacing="0" Margin="10,0,10,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>           
+                            </Grid.RowDefinitions>
+                                            
+                            <Label Style="{StaticResource LabelLargeBlack}" Grid.Row="0" LineBreakMode="WordWrap" HorizontalTextAlignment="End">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Total Amount :" Style="{StaticResource LabelSmallBlack}"  />
+                                        <Span Text="{Binding TotalAmount}" Style="{StaticResource LabelSmallBlack}" />                                                  
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid>                        
+
+                        <Grid Grid.Row="5"  Margin="5" HeightRequest="50">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5*"/>
+                                <ColumnDefinition Width="5*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <contr:RoundedCornerView Grid.Column="0" BorderColor="{StaticResource BlueColor}" BorderWidth="1" RoundedCornerRadius="6" BackgroundColor="{StaticResource TransparentColor}">
+                                <Grid BackgroundColor="{StaticResource BlueColor}" VerticalOptions="FillAndExpand">
+                                <Label Text="Save" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" VerticalOptions="Center"  Style="{StaticResource LabelLargeWhite}" />
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                            Command="{Binding BindingContext.SaveReturnEntryCommand}"                                                    
+                                            NumberOfTapsRequired="1" />
+                                </Grid.GestureRecognizers>
+                                </Grid>
+                            </contr:RoundedCornerView>
+
+                            <contr:RoundedCornerView Grid.Column="1" BorderColor="{StaticResource PinkColor}" BorderWidth="1" RoundedCornerRadius="6" BackgroundColor="{StaticResource TransparentColor}">
+                                <Grid BackgroundColor="{StaticResource PinkColor}" VerticalOptions="FillAndExpand">
+                                <Label Text="Cancel" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" VerticalOptions="Center" Style="{StaticResource LabelLargeWhite}" />
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                            Command="{Binding BindingContext.CancelReturnEntryCommand}"
+                                            NumberOfTapsRequired="1" />
+                                </Grid.GestureRecognizers>
+                                </Grid>
+                            </contr:RoundedCornerView>
+                                       
+                        </Grid>
+                                    
+                    </Grid>
+                    
+                </Grid>
+            </Grid> 
+    </ContentPage.Content>
+</ContentPage>

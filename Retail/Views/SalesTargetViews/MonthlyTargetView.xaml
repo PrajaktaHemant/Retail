@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:contr="clr-namespace:Retail.Controls"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    x:Class="Retail.Views.SalesTargetViews.MonthlyTargetView"
+    FlowDirection="{Binding flowDirection}"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="true"
+    BackgroundColor="{StaticResource contentBG}"
+    Title="Monthly Target" x:Name="Root">
+
+     <ContentPage.ToolbarItems>
+        <ToolbarItem Name="MenuItem1" Order="Primary"  Icon="noteadd.png" Text="Item 1" Priority="0" />        
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+    <StackLayout >
+        <Grid Padding="5" VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+        <RowDefinition Height="8*"/>
+        <RowDefinition Height="auto"/>
+    </Grid.RowDefinitions>
+                         
+            <Grid  Padding="0,0,0,0">
+
+                <Grid.Padding>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="Android">0,0,0,0</On>
+                    <On Platform="iOS">0,5,0,0</On>
+                </OnPlatform>
+                </Grid.Padding>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                 <Grid Grid.Row="0" Padding="5" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>                                                                                 
+                    </Grid.RowDefinitions>   
+                    <contr:RoundedCornerView HeightRequest="45" Margin="5"  Grid.Row="0" BorderColor="{StaticResource borderColor}" BorderWidth="1" RoundedCornerRadius="12"  >                         
+                    <Grid BackgroundColor="{StaticResource WhiteColor}" Padding="8">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>                       
+                        </Grid.RowDefinitions>                    
+                        <Grid Grid.Row="0" >
+                            <contr:TitledDateTimePicker 
+                            SDate="{x:Static sys:DateTime.Now}" SelectedDate="{Binding SelectedDate}"
+                            ItemTapped="TitledDateTimePicker_ItemTapped" />
+
+                            
+
+                        </Grid>                     
+                    </Grid>
+                    </contr:RoundedCornerView>  
+                </Grid>
+
+                <Grid Grid.Row="1" RowSpacing="0" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>                                                                                 
+                    </Grid.RowDefinitions>                                         
+                                
+                    <contr:RoundedCornerView HeightRequest="60" Margin="5"  Grid.Row="0" BorderColor="{StaticResource borderColor}" BorderWidth="1" RoundedCornerRadius="12"  >                         
+                            <Grid BackgroundColor="{StaticResource WhiteColor}" Padding="8">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>                       
+                                </Grid.RowDefinitions>
+                    
+                                <Grid Grid.Row="0" >
+                                    <Picker 
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="Center"                                                                                                    
+                                        SelectedIndexChanged="StoreDropdown_SelectedIndexChanged"
+                                        ItemDisplayBinding="{Binding StoreName}"
+                                        x:Name="StoreDropdown" />
+                                </Grid>                     
+                            </Grid>
+                    </contr:RoundedCornerView>                                 
+                </Grid>
+
+                <Grid Grid.Row="2" Padding="5" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="75"/>
+                    </Grid.RowDefinitions>
+                    <contr:RoundedCornerView   Grid.Row="0" BorderColor="{StaticResource borderColor}" BorderWidth="5" RoundedCornerRadius="15" >                         
+                            <Grid VerticalOptions="Center" BackgroundColor="{StaticResource WhiteColor}" Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                            <Label Text="Target"  HorizontalOptions="Center" Style="{StaticResource LabelLargeBlue}" Grid.Row="0" Grid.Column="0"/>
+                            <Label Text="Achived" HorizontalOptions="Center" Style="{StaticResource LabelLargeBlue}" Grid.Row="0" Grid.Column="1"/>
+                            <Label Text="Balance" HorizontalOptions="Center" Style="{StaticResource LabelLargeBlue}" Grid.Row="0" Grid.Column="2"/>
+
+                            <Label Text="100,000" HorizontalOptions="Center" Style="{StaticResource LabelLargeBlack}" Grid.Row="1" Grid.Column="0"/>
+                            <Label Text="60,000"  HorizontalOptions="Center" Style="{StaticResource LabelLargeGreen}" Grid.Row="1" Grid.Column="1" />
+                            <Label Text="45,000"  HorizontalOptions="Center" Style="{StaticResource LabelLargeRed}" Grid.Row="1" Grid.Column="2"/>
+                    </Grid>
+                    </contr:RoundedCornerView>
+                </Grid>
+
+                <Grid Grid.Row="3" Padding="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                     <contr:RoundedCornerView   Grid.Row="0" BorderColor="{StaticResource borderColor}" BorderWidth="5" RoundedCornerRadius="15" >                         
+                            <Grid VerticalOptions="Center" BackgroundColor="{StaticResource WhiteColor}" Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                           <contr:Accordion x:Name="MainOne"/>
+                    </Grid>
+                    </contr:RoundedCornerView>
+                    
+                </Grid>
+                
+            </Grid>
+        </Grid>
+   </StackLayout> 
+    </ContentPage.Content>
+</ContentPage>
